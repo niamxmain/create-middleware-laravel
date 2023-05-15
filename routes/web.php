@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware('adminAccess')->group(function(){
+    Route::get('userlisting', [UserController::class, 'index'])->name('user.index');
+
+});
+Route::get('login', [UserController::class, 'login'])->name('admin.login');

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController as TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('adminAccess')->group(function(){
+Route::middleware('adminAccess')->group(function () {
     Route::get('userlisting', [UserController::class, 'index'])->name('user.index');
-
 });
 Route::get('login', [UserController::class, 'login'])->name('admin.login');
+
+Route::get('role', [
+    'middleware' => 'role:editor',
+    'uses' => 'TestController@index',
+]);
+
+Route::get('terminate', [
+    'middleware' => 'terminate',
+    'uses' => 'ABCController@index',
+]);

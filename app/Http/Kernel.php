@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'adminAccess' => \App\Http\Middleware\AdminAccess::class,
         'make' => \App\Http\Middleware\MakeMiddleware::class,
         'role' => \App\Http\Middleware\RoleMiddleware::class,
+        'terminate' => \App\Http\Middleware\TerminateMiddleware::class,
     ];
 }

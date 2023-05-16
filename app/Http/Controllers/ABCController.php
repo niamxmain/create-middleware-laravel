@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class TestController extends Controller
+class ABCController extends Controller
 {
     public function index()
     {
-        echo "<br>Test Controller.";
+        echo "<br>ABC Controller.";
     }
 }

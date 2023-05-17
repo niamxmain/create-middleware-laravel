@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController as TestController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +25,15 @@ Route::middleware('adminAccess')->group(function () {
 });
 Route::get('login', [UserController::class, 'login'])->name('admin.login');
 
-Route::get('role', [
-    'middleware' => 'role:editor',
-    'uses' => 'TestController@index',
-]);
+Route::get(
+    'role', [TestController::class, 'index']
+    // [
+    //     'middleware' => 'role:editor',
+    //     'use' => 'TestController@index',
+    // ]
+)->middleware(['terminate', 'role',]);
 
 Route::get('terminate', [
     'middleware' => 'terminate',
-    'uses' => 'ABCController@index',
+    'use' => 'ABCController@index',
 ]);
